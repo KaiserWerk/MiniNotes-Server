@@ -1,9 +1,9 @@
 package config
 
 import (
+	"github.com/KaiserWerk/mininotes-server/internal/entity"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"mininotes-server/entity"
 )
 
 var (

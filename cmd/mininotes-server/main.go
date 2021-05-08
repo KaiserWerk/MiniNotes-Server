@@ -5,12 +5,13 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"github.com/KaiserWerk/mininotes-server/internal/assets"
+	"github.com/KaiserWerk/mininotes-server/internal/config"
+	"github.com/KaiserWerk/mininotes-server/internal/databaseservice"
+	"github.com/KaiserWerk/mininotes-server/internal/handler"
+	"github.com/KaiserWerk/mininotes-server/internal/helper"
 	"github.com/gorilla/mux"
 	"io/ioutil"
-	"mininotes-server/assets"
-	"mininotes-server/config"
-	"mininotes-server/databaseservice"
-	"mininotes-server/helper"
 	"net/http"
 	"os"
 	"os/signal"
@@ -57,9 +58,9 @@ func main() {
 	host := fmt.Sprintf(":%s", port)
 
 	router := mux.NewRouter()
-	router.HandleFunc("/", helloHandler)
-	router.HandleFunc("/get", getContentHandler)
-	router.HandleFunc("/store", storeContentHandler)
+	router.HandleFunc("/", handler.HelloHandler)
+	router.HandleFunc("/get", handler.GetContentHandler)
+	router.HandleFunc("/store", handler.StoreContentHandler)
 
 	// catch ctrl+c for graceful shutdown
 	notify := make(chan os.Signal)

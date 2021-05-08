@@ -1,17 +1,17 @@
-package main
+package handler
 
 import (
 	"fmt"
+	"github.com/KaiserWerk/mininotes-server/internal/databaseservice"
 	"io/ioutil"
-	"mininotes-server/databaseservice"
 	"net/http"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
+func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello"))
 }
 
-func getContentHandler(w http.ResponseWriter, r *http.Request) {
+func GetContentHandler(w http.ResponseWriter, r *http.Request) {
 	id, secret, ok := r.BasicAuth()
 	if !ok {
 		fmt.Println("Basic auth failed for id " + id)
@@ -36,7 +36,7 @@ func getContentHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(user.Content))
 }
 
-func storeContentHandler(w http.ResponseWriter, r *http.Request) {
+func StoreContentHandler(w http.ResponseWriter, r *http.Request) {
 	// TODO duplicate code
 	id, secret, ok := r.BasicAuth()
 	if !ok {

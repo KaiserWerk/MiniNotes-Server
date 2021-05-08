@@ -1,13 +1,13 @@
 package databaseservice
 
 import (
+	"github.com/KaiserWerk/mininotes-server/internal/config"
+	"github.com/KaiserWerk/mininotes-server/internal/entity"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
-	"mininotes-server/config"
-	"mininotes-server/entity"
 	"sync"
 )
 

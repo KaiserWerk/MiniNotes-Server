@@ -2,8 +2,8 @@ package databaseservice
 
 import (
 	"encoding/base64"
-	"mininotes-server/entity"
-	"mininotes-server/helper"
+	"github.com/KaiserWerk/mininotes-server/internal/entity"
+	"github.com/KaiserWerk/mininotes-server/internal/helper"
 )
 
 func (ds *DatabaseService) GenerateUser() (*entity.User, error) {
