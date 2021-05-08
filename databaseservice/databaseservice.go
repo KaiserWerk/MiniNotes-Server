@@ -11,17 +11,17 @@ import (
 	"sync"
 )
 
-type databaseService struct {
+type DatabaseService struct {
 	db *gorm.DB
 }
 
 var (
-	dbInit sync.Once
-	service databaseService
+	dbInit  sync.Once
+	service DatabaseService
 )
 
 // Get returns the database service connection
-func Get() *databaseService {
+func Get() *DatabaseService {
 	dbInit.Do(func() {
 		cfg := config.GetConfig()
 
@@ -45,7 +45,7 @@ func Get() *databaseService {
 			panic("gorm connection error: " + err.Error())
 		}
 
-		service = databaseService{db: db}
+		service = DatabaseService{db: db}
 	})
 
 
@@ -54,7 +54,7 @@ func Get() *databaseService {
 
 // AutoMigrate makes sure the database tables exist, corresponding
 // to the supplied structs
-func (ds databaseService) AutoMigrate() error {
+func (ds DatabaseService) AutoMigrate() error {
 	err := ds.db.AutoMigrate(
 		&entity.User{},
 	)

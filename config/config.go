@@ -14,6 +14,10 @@ func SetConfigFile(s string) {
 	configFile = s
 }
 
+func GetConfigFile() string {
+	return configFile
+}
+
 func GetConfig() *entity.UserConfig {
 	cont, err := ioutil.ReadFile(configFile)
 	if err != nil {
