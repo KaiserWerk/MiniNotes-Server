@@ -48,7 +48,6 @@ func Get() *DatabaseService {
 		service = DatabaseService{db: db}
 	})
 
-
 	return &service
 }
 
